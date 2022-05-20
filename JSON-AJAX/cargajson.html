@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX Cambiante</title>
+    <script type="text/javascript" src="cargajson1.js"></script>
+</head>
+
 <body>
+    <select name="json" id="prueba" onchange="loadDoc()">
+        <option value="0">Seleccione archivo json</option>
+        <option value="1">Json1</option>
+        <option value="2">Json2</option>
+        <option value="3">Json3</option>
+    </select>
 
-  <div id="demo">
+    <div id='mostrar'></div>
 
-  <h2>The XMLHttpRequest Object</h2>
-
-  <button type="button" onclick="loadDoc('json1.json', myFunction)">Change Content
-  </button>
-</div>
-
-<script>
-    function loadDoc(url, cFunction) {
-        var xhttp;
-        xhttp=new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var data = JSON.parse(xhttp.responseText);
-                cFunction(this);
-                }
-            };
-        xhttp.open("GET", url, true);
-        xhttp.send();
-    }
-    function myFunction(xhttp) {
-        document.getElementById("demo").innerHTML = obj;
-    }
-</script>
 </body>
+
 </html>
