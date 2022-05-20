@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AJAX Cambiante</title>
-    <script type="text/javascript" src="cargajson1.js"></script>
+    <script type="text/javascript" src="cargajson.js"></script>
 </head>
 
 <body>
-    <select name="json" id="prueba" onchange="loadDoc()">
+    <!-- Selector Para Cargar los .json-->
+    <select name="json" id="prueba" onchange="main()">
         <option value="0">Seleccione archivo json</option>
         <option value="1">Json1</option>
         <option value="2">Json2</option>
         <option value="3">Json3</option>
     </select>
 
+    <!--Tag utilizado para mostrar lo recopilado por los .json-->
     <div id='mostrar'></div>
-
 </body>
 
 </html>
