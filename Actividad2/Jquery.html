@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<script>
+    $(function(){
+        
+   
+    $('#adicionar').click(function(){
+        alert("Usuario Agregado correctamente a la tabla");
+        $("#mytable").fadeToggle(10)
+       
+        $("#mytable").fadeIn(300)
+    
+    });
+    
+});
+</script>
+
+<script>
+    $(document).ready(function(){
+      
+
+
+    })
+</script>
+
+
+<script>
+    $(document).ready(function(){
+      $("input").focus(function(){
+       $(this).css("background-color","orange");
+      });
+      $("input").blur(function(){
+       $(this).css("background-color","lime");
+      });
+
+    });
+</script>
+
+<script>
+   $(function(){
+        $('#adicionar').click(function(){
+            $("input").css("background-color","white");
+
+          });
+
+        });
+</script>
+
+<script>
+
+$(function(){      
+        $("#btn-quitar").hide();       
+    });
+ </script>
+
+<script>
+    $(function(){
+         $('#adicionar').click(function(){
+            $("#btn-quitar").show();
+ 
+           });
+ 
+         });
+ </script>
+
+<script>
+ $(document).ready(function() {
+//obtenemos el valor de los input
+
+$('#adicionar').click(function() {
+  var nombre = document.getElementById("nombre").value;
+  var correo = document.getElementById("correo").value;
+  var comentario = document.getElementById("comentario").value;
+  var i = 1; //contador para asignar id al boton que borrara la fila
+  var fila = '<tr id="row' + i + '"><td>' + nombre + '</td><td>' + correo+ '</td><td>' 
+    + comentario+ '</td><td><input type="checkbox" name="remove" id="' + i 
+    + '" class="btn"></td></tr>'; //esto seria lo que contendria la fila
+
+    // <button type="button" name="remove" id="' + i 
+    // + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
+
+
+  i++;
+
+  $('#mytable tr:first').after(fila);
+    $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
+    var nFilas = $("#mytable tr").length;
+    $("#adicionados").append(nFilas - 1);
+    //le resto 1 para no contar la fila del header
+    document.getElementById("correo").value ="";
+    document.getElementById("comentario").value = "";
+    document.getElementById("nombre").value = "";
+    document.getElementById("nombre").focus();
+  });
+$(document).on('click', '.btn_remove', function() {
+  var button_id = $(this).attr("id");
+    //cuando da click obtenemos el id del boton
+    $('#row' + button_id + '').remove(); //borra la fila
+    //limpia el para que vuelva a contar las filas de la tabla
+    $("#adicionados").text("");
+    var nFilas = $("#mytable tr").length;
+    $("#adicionados").append(nFilas - 1);
+  });
+});
+
+
+</script>
+</head>
+<body>
+    <div class="container">
+        <form>
+         <div class="form-group">
+          <p>
+            <label>Entre su Nombre:</label> <br>
+            <input id="nombre" class="form-control" type="text" placeholder="Nombre..."><br>
+          </p>
+          <p>
+            <label>Entre su Apellido:</label> <br>
+            <input id="correo" class="form-control" type="text" placeholder="Apellido..."><br>
+          </p>
+          <p>
+            <label>Entre su C&eacute;dula:</label> <br>
+            <input id="comentario" class="form-control" type="text" placeholder="Cedúla"> <br>
+          </p>
+          <button id="adicionar" class="btn btn-success" type="button">Adicionar a la tabla</button>
+        </div>
+      </form>
+      
+      <p>Elementos en la Tabla:
+        <div id="adicionados"></div>
+      </p>
+      <table  id="mytable" class="table table-bordered table-hover ">
+        <tr>
+          <th>Nobmre</th>
+          <th>Apellidos</th>
+          <th>C&eacute;dula</th>
+          <th>Eliminar</th>
+      
+        </tr>
+      </table>
+     <button id="btn-quitar" type="button" name="remove" class="btn btn-danger btn_remove">Quitar</button></td></tr>
+      </div>
+
+
+
+</body>
+</html>
+</html>
