@@ -8,13 +8,22 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <!-- para vincular la hoja de estilos -->  
-
     <link rel="stylesheet" href="style.css">
+
+    <script>
+      $(document).ready(function(){
+        // haciendo click a boton limpiar
+        $("#bt").click(function(){
+          // limpia los input
+          $("input").val('');
+        });
+      });
+      </script>
 
 </head>
 <body>
 
-<!--Formulario para poder agregar Nombre,CorreoElectronico y comentario -->  
+<!--Formulario para poder agregar Nombre, CorreoElectronico y comentario -->  
   <Form id="Formulariouwu">
         <label for="NombreForm" >lapromo</label>
         <input id=NombreForm name=NombreForm placeholder="Nombre"><br>
@@ -22,14 +31,14 @@
         <input type="text" id=comentario name=comentario  placeholder="Comentario">
     <button>Agregar</button>
   </Form>
-<!--Div y un table para representar la tabla con "Seleccion",Nombre,Correo Electronico, y comentario -->  
+  <button id="bt">Limpiar</button>
 
+<!--Div y un table para representar la tabla con "Seleccion",Nombre,Correo Electronico, y comentario -->  
     <div>
       <Table id="TransactionTable">
           <!--tr Title row fila de la tabla-->  
          <tr>
              <!--th Title Header cabecera del tabla-->  
-
              <th> 
                SeleccionXD
              </th>
@@ -62,16 +71,16 @@
       //al poner submit vamos a hacer el evento //
       form.addEventListener("submit", function(event) {
         //evitar la actualizacion constante de la pagina //
-           event.preventDefault();
+          event.preventDefault();
            //un objeto que contenga lo de form //
-           let transactionFormData = new FormData(form)
-           // una tabla que referencia un documento que esta en la tabla //
-           let TransactionTableRef = document.getElementById("TransactionTable");
-           //Acomodandolo para que aparesca abajito//
-           let newTransactionRowRef = TransactionTableRef.insertRow(-1);
-           //aqui deberia ir el check box pero no sale nada pq no esta puesto nada//
+          let transactionFormData = new FormData(form)
+          // una tabla que referencia un documento que esta en la tabla //
+          let TransactionTableRef = document.getElementById("TransactionTable");
+          //Acomodandolo para que aparesca abajito//
+          let newTransactionRowRef = TransactionTableRef.insertRow(-1);
+          //aqui deberia ir el check box pero no sale nada pq no esta puesto nada//
           let newTypeCellRef = newTransactionRowRef.insertCell(0)
-            //aqui deberia aparecer el nombre introducido en la form //
+           //aqui deberia aparecer el nombre introducido en la form //
            newTypeCellRef = newTransactionRowRef.insertCell(1)
            newTypeCellRef.textContent = transactionFormData.get("NombreForm")
            
