@@ -1,10 +1,17 @@
 [{
-        "nombre": "foo",
-        "apellido": "bat"
+        "nombre": "Fabian",
+        "apellido": "Bugueno",
+        "correo": "fabian.bugueno.flores@alumnos.uta.cl"
     },
 
     {
-        "nombre": "faa",
-        "apellido": "bor"
+        "nombre": "Duvan",
+        "apellido": "Fuentes",
+        "correo": "duvan.fuentes.alvarez@alumnos.uta.cl"
+    },
+    {
+        "nombre": "Araceli",
+        "apellido": "Leon",
+        "correo": "araceli.leon.riva@alumnos.uta.cl"
     }
 ]

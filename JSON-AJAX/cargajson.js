@@ -76,6 +76,7 @@ function main() {
 
 }
 /*Función "default" que simplemente hace que no muestre nada */
+/*O limpie lo que estaba siendo mostrado, reemplazandolo por nada */
 function json0() {
     document.getElementById('mostrar').innerHTML = '';
 }
@@ -83,10 +84,12 @@ function json0() {
 /*Función que utiliza los datos parseados contenidos en json1.json  */
 /*Y utiliza el tag "Div" con la Id "mostrar" para mostrarlos en html */
 function json1(parsing) {
-    var muestra = '<table style="border: 1px black solid"> ';
+    var muestra = '<table class ="tabla-bonita">' + 
+                    '<thead> <td> Nombre </td> <td> Apellido </td> <td style= "text-align: center"> Correo </td> </thead>';
     for (let item in parsing) {
-        muestra += '<tr> <td> nombre: ' + parsing[item].nombre + '</td>' +
-        '<td> apellido: ' + parsing[item].apellido + '</td></tr>';
+        muestra += '<tr> <td>' + parsing[item].nombre + '</td>' +
+                        '<td>' + parsing[item].apellido + '</td>'+ 
+                        '<td>' +   parsing[item].correo + '</td> </tr>';
     }
     muestra += '</table>';
     document.getElementById('mostrar').innerHTML = muestra;
