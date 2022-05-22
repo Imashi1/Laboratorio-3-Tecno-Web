@@ -89,6 +89,8 @@ $('#adicionar').click(function() {
     document.getElementById("nombre").focus();
   });
 $(document).on('click', '.btn_remove', function() {
+  var checkedValue = $('.btn:checked').value;
+  console.log(checkedValue);
   var button_id = $(this).attr("id");
     //cuando da click obtenemos el id del boton
     $('#row' + button_id + '').remove(); //borra la fila

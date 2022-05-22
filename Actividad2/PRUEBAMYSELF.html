@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // haciendo click a boton limpiar
+            $("#limpiar").click(function(){
+            // limpia los input
+            $("input").val('');
+            });
+        });
+
+        $( document ).ready(function(){
+            $('#boton_agregar').on('click',function(){
+                var nombre = $('#nombre').val();
+                var correo = $('#correo').val();
+                var comentario = $('#comentario').val();
+                var fila = '<tr>'+ 
+                            '<td><input type="checkbox" id="check"></td>'+
+                            '<td>'+nombre+'</td>'+
+                            '<td>'+correo+'</td>'+
+                            '<td>'+comentario+'</td>'+
+                            '</tr>';
+                $('#table-pendientes tbody').append(fila);
+                $('#nombre', '#correo','#comentario').val('');
+                
+            });
+
+            $(".eliminar").on("click", function() {
+                $('input:checked').parents("tr").remove();
+                });
+        })
+
+    </script>
+
+</head>
+<body>
+
+    <input type="text" id="nombre" placeholder="Nombre"/><br>
+    <input type="text" id="correo" placeholder="Correo"/><br>
+    <input type="text" id="comentario" placeholder="Comentarios"/><br> 
+    <button value="Agregar" id="boton_agregar">Agregar</button>
+    <button id="limpiar">Limpiar</button><br>
+    <table id="table-pendientes" border="1">
+        <thead>
+            <tr>
+                <th>Seleccionar</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Comentario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" id="check"></td> 
+                <td>Pepe </td>
+                <td>pepe@gmail.com</td>
+                <td>sin comentarios</td>
+            </tr>
+        </tbody>
+    </table><br>
+    <button class="eliminar">Eliminar</button>
+
+</body>
+</html>
