@@ -3,6 +3,74 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    
+    <!--Con este Jquery Mostraremos una alerta para avisar al usuario que el fue agregado a la tabla y dos efectos a la tabla(desaparecer y aparecer) para que se vean los cambios-->
+    <script>
+        $(function(){
+        $('#boton_agregar').click(function(){
+            alert("Usuario Agregado correctamente a la tabla");
+            $("#table-pendientes").fadeToggle(10)  
+            $("#table-pendientes").fadeIn(300)       
+        });      
+    });
+    </script>
+
+
+<!--Con este jQuery haremos que cambien de color las cajas de texto cuando se pulsan cambian a color rojo y al seleccionar otra quedaran con color verde-->
+<script>
+    $(document).ready(function(){
+      $("input").focus(function(){
+       $(this).css("background-color","red");
+      });
+      $("input").blur(function(){
+       $(this).css("background-color","lime");
+      });
+    });
+</script>
+
+<!--Con este Jquery al pulsar el boton limpiar hara que las cajas de texto queden en color blanco-->
+<script>
+    $(function(){
+         $('#limpiar').click(function(){
+             $("input").css("background-color","white");
+           });
+         });
+ </script>
+
+<!--Con este Jquery el boton eliminar quedara invisible hasta una accion de otro jquery-->
+<script>
+    $(function(){      
+            $(".eliminar").hide();       
+        });
+     </script>
+
+<!--Al utilizar este jquery al utilizar el boton "agregar" aparecera el boton eliminar -->
+<script>
+    $(function(){
+         $('#boton_agregar').click(function(){
+            $(".eliminar").show();
+           });
+         });
+ </script>
+
+<!--Al utilizar este Jquery al hacerle click al boton ejemplo append pondremos el texto al final del HTML  -->
+<script>
+    $(function(){
+        $('#EjemploApp').click(function(){
+            $(".ElementoParaEjemplos").append("Ejemplo Append "); 
+          });
+        });
+  </script>
+<!--Al utilizar este Jquery al hacerle click al boton ejemplo after pondremos el texto en otro elemento pero despues de el elemento utilizado en el ejemplo  -->
+<script>
+      $(function(){
+          $('#EjemploAft').click(function(){
+              $(".ElementoParaEjemplos").after("Ejemplo After ");
+            }); 
+          });
+</script>
+
+
     <script>
         $(document).ready(function(){
             // haciendo click a boton limpiar
@@ -62,6 +130,21 @@
         </tbody>
     </table><br>
     <button class="eliminar">Eliminar</button>
+
+    <div class="ElementoParaEjemplos"> 
+        Elemento para ejemplos! 
+    </div>
+
+    <!--la diferencia entre append y after son:
+        mientras que append lo agrega al final del elemento pero adentro 
+        after te lo coloca afuera pero despues del elemento-->
+
+    <!--Con append ponemos un contenido al final del html -->
+    <button id="EjemploApp" class="ejemploAppend" type="button">Efecto Append</button>
+    <!--Con after pone el contenido en otro elemento pero despues del elemento ejemplo-->
+    <button id="EjemploAft" class="ejemploAfter" type="button">Efecto After </button>
+
+
 
 </body>
 </html>
