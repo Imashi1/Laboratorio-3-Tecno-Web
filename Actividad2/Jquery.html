@@ -1,146 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet" href="style.css">
-
-<script>
-    $(function(){
-        
-   
-    $('#adicionar').click(function(){
-        alert("Usuario Agregado correctamente a la tabla");
-        $("#mytable").fadeToggle(10)
-       
-        $("#mytable").fadeIn(300)
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery</title>
+    <link rel="stylesheet" href="style.css">
     
-    });
-    
-});
-</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-
-<script>
-    $(document).ready(function(){
-      $("input").focus(function(){
-       $(this).css("background-color","orange");
-      });
-      $("input").blur(function(){
-       $(this).css("background-color","lime");
-      });
-
-    });
-</script>
-
-<script>
-   $(function(){
-        $('#adicionar').click(function(){
-            $("input").css("background-color","white");
-
-          });
-
+    <script>
+        // Con este Jquery se limpia los inputs
+        $(document).ready(function(){
+            $("#limpiar").click(function(){
+            $("input").val('');
+            });
         });
-</script>
 
-<script>
+        // Con este Jquery se agrega y elimina los datos a la tabla
+        $( document ).ready(function(){
+            // Para agregar
+            $('#boton_agregar').on('click',function(){
+                var nombre = $('#nombre').val();
+                var correo = $('#correo').val();
+                var comentario = $('#comentario').val();
+                var fila = '<tr>'+ 
+                            '<td><input type="checkbox" id="check"></td>'+
+                            '<td>'+nombre+'</td>'+
+                            '<td>'+correo+'</td>'+
+                            '<td>'+comentario+'</td>'+
+                            '</tr>';
+                $('#table-pendientes tbody').append(fila);
+                $('#nombre', '#correo','#comentario').val('');
+                
+            });
 
-$(function(){      
-        $("#btn-quitar").hide();       
-    });
- </script>
+            // Para eliminar
+            $(".eliminar").on("click", function() {
+                $('input:checked').parents("tr").remove();
+                });
+        })
+    </script>
 
-<script>
-    $(function(){
-         $('#adicionar').click(function(){
-            $("#btn-quitar").show();
- 
-           });
- 
-         });
- </script>
+    <!-- 1. Con este Jquery Mostraremos una alerta para avisar si el ejemplo es mostrado o ocultado-->
+    <script>
+        $(function(){
+            $('#ocultar').click(function(){
+                $("div.div1").hide();
+                alert("Ejemplo Ocultado");                   
+            });
+            $('#mostrar').click(function(){
+                $("div.div1").show();
+                alert("Ejemplo Mostrado");                   
+            });
+        });
+    </script>
 
-<script>
- $(document).ready(function() {
-//obtenemos el valor de los input
+    <!-- 2. Con este Jquery al pulsar el div de id flip se deslizara otro div de id panel lentamente -->
+    <script>
+        $(function(){
+            $('#flip').click(function(){
+                if ($("#flip").text() == 'Ver Mas'){
+                    $('#flip').text('Ver Menos');
+                } else {
+                    $('#flip').text('Ver Mas');
+                }
+                $("#panel").slideToggle("slow");
+                // Al hacer click en el div de id panel, se cambiran alguno estilos del body
+                $("#panel").click(function(){
+                    if ($("#panel").text() == 'Modo Oscuro'){
+                        $('#panel').text('Modo Claro');
+                        $("body").css("background-color", "#575757");
+                        $("body").css("color", "white");
+                    } else {
+                        $('#panel').text('Modo Oscuro');
+                        $("body").css("color", "black");
+                        $("body").css("background-color", "#FFFFFF");
+                    } 
+                });
+            });
+        });
+    </script>
 
-$('#adicionar').click(function() {
-  var nombre = document.getElementById("nombre").value;
-  var correo = document.getElementById("correo").value;
-  var comentario = document.getElementById("comentario").value;
-  var i = 1; //contador para asignar id al boton que borrara la fila
-  var fila = '<tr id="row' + i + '"><td>' + nombre + '</td><td>' + correo+ '</td><td>' 
-    + comentario+ '</td><td><input type="checkbox" name="remove" id="' + i 
-    + '" class="btn"></td></tr>'; //esto seria lo que contendria la fila
+    <!-- 3. Con este Jquery hablan dos efectos (desaparecer y aparecer) al presionar el flip -->
+    <script>
+        $(function(){
+            $('#flip').click(function(){
+                $("#flip").fadeToggle(10)  
+                $("#flip").fadeIn(300)       
+            });      
+        });
+    </script>
 
-    // <button type="button" name="remove" id="' + i 
-    // + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
+    <!-- 4. Con este Jquery al pasar el cursor por el id flip, cambia el diseno del puntero -->
+    <script>
+        $(function(){
+            $('#flip').mouseenter(function(){
+                $("#flip").css("cursor", "pointer")      
+            });      
+        });
+    </script>
 
+    <!--Al utilizar este Jquery al hacerle click al boton ejemplo append pondremos el texto al final del HTML  -->
+    <script>
+        $(function(){
+            $('#EjemploApp').click(function(){
+                $(".ElementoParaEjemplos").append("Ejemplo Append "); 
+            });
+            });
+    </script>
+    <!--Al utilizar este Jquery al hacerle click al boton ejemplo after pondremos el texto en otro elemento pero despues de el elemento utilizado en el ejemplo  -->
+    <script>
+        $(function(){
+            $('#EjemploAft').click(function(){
+                $(".ElementoParaEjemplos").after("Ejemplo After ");
+                }); 
+            });
+    </script>
 
-  i++;
-
-  $('#mytable tr:first').after(fila);
-    $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
-    var nFilas = $("#mytable tr").length;
-    $("#adicionados").append(nFilas - 1);
-    //le resto 1 para no contar la fila del header
-    document.getElementById("correo").value ="";
-    document.getElementById("comentario").value = "";
-    document.getElementById("nombre").value = "";
-    document.getElementById("nombre").focus();
-  });
-$(document).on('click', '.btn_remove', function() {
-  var checkedValue = $('.btn:checked').value;
-  console.log(checkedValue);
-  var button_id = $(this).attr("id");
-    //cuando da click obtenemos el id del boton
-    $('#row' + button_id + '').remove(); //borra la fila
-    //limpia el para que vuelva a contar las filas de la tabla
-    $("#adicionados").text("");
-    var nFilas = $("#mytable tr").length;
-    $("#adicionados").append(nFilas - 1);
-  });
-});
-
-
-</script>
 </head>
 <body>
-    <div class="container">
-        <form>
-         <div class="form-group">
-          <p>
-            <label>Entre su Nombre:</label> <br>
-            <input id="nombre" class="form-control" type="text" placeholder="Nombre..."><br>
-          </p>
-          <p>
-            <label>Entre su Apellido:</label> <br>
-            <input id="correo" class="form-control" type="text" placeholder="Apellido..."><br>
-          </p>
-          <p>
-            <label>Entre su C&eacute;dula:</label> <br>
-            <input id="comentario" class="form-control" type="text" placeholder="Cedúla"> <br>
-          </p>
-          <button id="adicionar" class="btn btn-success" type="button">Adicionar a la tabla</button>
-        </div>
-      </form>
-      
-      <p>Elementos en la Tabla:
-        <div id="adicionados"></div>
-      </p>
-      <table  id="mytable" class="table table-bordered table-hover ">
-        <tr>
-          <th>Nobmre</th>
-          <th>Apellidos</th>
-          <th>C&eacute;dula</th>
-          <th>Eliminar</th>
-      
-        </tr>
-      </table>
-     <button id="btn-quitar" type="button" name="remove" class="btn btn-danger btn_remove">Quitar</button></td></tr>
-      </div>
+    <h1>Jquery</h1>
+    <h2>Tabla dinamica</h2>
+
+        <input type="text" id="nombre" placeholder="Nombre"/><br>
+        <input type="text" id="correo" placeholder="Correo"/><br>
+        <input type="text" id="comentario" placeholder="Comentarios"/><br> <br> 
+        <button value="Agregar" id="boton_agregar">Agregar</button>
+        <button id="limpiar">Limpiar</button><br>
+   
+    <table id="table-pendientes" class="tabla-bonita">
+        <thead>
+            <tr>
+                <th>Seleccionar</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Comentario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" id="check"></td> 
+                <td>Pepe </td>
+                <td>pepe@gmail.com</td>
+                <td>sin comentarios</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="eliminar">Eliminar</button>
+    <br><br> 
+    <br><br> 
+    <h2>Sub actividades de JQuery</h2>
+    <h3>Ejemplos de JQuery vistos en clases</h3>
+
+    <!-- Ejemplo 1 -->
+    <div class="div1">Escoge una opcion</div>
+    <button id="ocultar">Ocultar</button>
+    <button id="mostrar">Mostrar</button>
+    <br>
+    <br>
+    <!-- Ejemplo 2, 3, 4 -->
+    <div id="flip">Ver Mas</div>
+    <div id="panel">Modo Oscuro</div>
+    <br>
 
 
+    <br>
+    <br>
+    <h3> jquery append y jquery after</h3>
+    <div class="ElementoParaEjemplos"> 
+        Elemento para ejemplos! 
+    </div>
+
+    <!--la diferencia entre append y after son:
+        mientras que append lo agrega al final del elemento pero adentro 
+        after te lo coloca afuera pero despues del elemento-->
+
+    <!--Con append ponemos un contenido al final del html -->
+    <button id="EjemploApp" class="ejemploAppend" type="button">Efecto Append</button>
+    <!--Con after pone el contenido en otro elemento pero despues del elemento ejemplo-->
+    <button id="EjemploAft" class="ejemploAfter" type="button">Efecto After </button>
 
 </body>
-</html>
 </html>
