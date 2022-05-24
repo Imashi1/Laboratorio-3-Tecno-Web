@@ -8,7 +8,7 @@ function main() {
     var value = document.getElementById('prueba').value;
     var xhttp;
         if (value == '0') {
-            //Puesto para que no tire error en xttp.open()
+            //Puesto para que no tire error en xhttp.open()
             url = 'json1.json';
         }
         if (value == '1') {
