@@ -41,3 +41,15 @@ button{
   border-bottom: 1px solid #dddddd;
 }
 /*----------------------------*/
+
+#panel, #flip {
+padding: 10px;
+color: white;
+text-align: center;
+background-color: cornflowerblue;
+}
+
+#panel {
+padding: 10px;
+display: none;
+}
