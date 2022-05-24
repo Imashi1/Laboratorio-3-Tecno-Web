@@ -4,77 +4,59 @@
 function main() {
     /*Varaible para tomar la opcion del selector a través de su atributo value */
     /* ubicado en cargajson.html */ 
+
     var value = document.getElementById('prueba').value;
-    if (value == '0') {
-        /*Inicia ejecución asíncrona*/ 
-        var xhttp;
-        var url = 'json1.json';
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                /*Ejecuta función json0 ubicado más abajo */
-                json0();
-            }
+    var xhttp;
+        if (value == '0') {
+            //Puesto para que no tire error en xttp.open()
+            url = 'json1.json';
         }
+        if (value == '1') {
+            url = 'json1.json';
+        }
+        if (value == '2'){
+            url = 'json2.json';
+        }
+        if (value =='3'){
+            url = 'json3.json';
+        }
+        xhttp = new XMLHttpRequest();
         xhttp.open("GET", url, true);
         xhttp.send();
-    }
-    if (value == '1') {
-        /*Inicia ejecución asíncrona*/
-        var xhttp;
-        var url = 'json1.json';
-        xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                /*Transformación de dato a objeto JavaScript*/
-                var data = JSON.parse(this.responseText);
-
-                /*Ejecuta función json1 ubicado más abajo */
-                json1(data);
-            }
-        }
-        xhttp.open("GET", url, true);
-        xhttp.send();
-    }
-
-    if (value == '2') {
-        /*Inicia ejecución asíncrona*/
-        var xhttp;
-        var url = 'json2.json';
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                /*Transformación de dato a objeto JavaScript*/
-                var data = JSON.parse(this.responseText);
+                if (value == '0') {
+                    /*Ejecuta función json0 ubicado más abajo */
+                    json0();
+                }
                 
-                /*Ejecuta función json2 ubicado más abajo */
-                json2(data);
-
+                if (value == '1') {
+                    /*Transformación de dato a objeto JavaScript*/
+                    var data = JSON.parse(this.responseText);
+                
+                    /*Ejecuta función json1 ubicado más abajo */
+                    json1(data);
+                    
+                }
+                if (value == '2') {
+                    /*Transformación de dato a objeto JavaScript*/
+                    var data = JSON.parse(this.responseText);
+                
+                    /*Ejecuta función json2 ubicado más abajo */
+                    json2(data);
+                }
+                if (value == '3'){
+                    url = 'json3.json';
+                    /*Transformación de dato a objeto JavaScript*/
+                    var data = JSON.parse(this.responseText);
+                
+                    /*Ejecuta función json3 ubicado más abajo */
+                    json3(data);
+                }
             }
         }
-        xhttp.open("GET", url, true);
-        xhttp.send();
     }
-    if (value == '3') {
-        /*Inicia ejecución asíncrona*/
-        var xhttp;
-        var url = 'json3.json';
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                /*Transformación de dato a objeto JavaScript*/
-                var data = JSON.parse(this.responseText);
-
-                /*Ejecuta función json3 ubicado más abajo */
-                json3(data);
-
-            }
-        }
-        xhttp.open("GET", url, true);
-        xhttp.send();
-    }
-
-}
+    
 /*Función "default" que simplemente hace que no muestre nada */
 /*O limpie lo que estaba siendo mostrado, reemplazandolo por nada */
 function json0() {
@@ -84,12 +66,18 @@ function json0() {
 /*Función que utiliza los datos parseados contenidos en json1.json  */
 /*Y utiliza el tag "Div" con la Id "mostrar" para mostrarlos en html */
 function json1(parsing) {
-    var muestra = '<table class ="tabla-bonita">' + 
-                    '<thead> <td> Nombre </td> <td> Apellido </td> <td style= "text-align: center"> Correo </td> </thead>';
+    var muestra =   '<h1> Información de estudiantes </h1>' +
+                    '<table class ="tabla-bonita">' + 
+                    '<thead>' +
+                    '<td> Nombre </td>' +
+                    '<td> Apellido </td>' + 
+                    '<td style= "text-align: center"> Correo </td>' +
+                    '</thead>';
     for (let item in parsing) {
-        muestra += '<tr> <td>' + parsing[item].nombre + '</td>' +
-                        '<td>' + parsing[item].apellido + '</td>'+ 
-                        '<td>' +   parsing[item].correo + '</td> </tr>';
+        console.log(parsing[item]);
+        muestra += '<tr> <td>' + parsing[item].nombre +  '</td>' +
+                        '<td>' + parsing[item].apellido +'</td>' + 
+                        '<td>' + parsing[item].correo +  '</td> </tr>';
     }
     muestra += '</table>';
     document.getElementById('mostrar').innerHTML = muestra;
@@ -98,7 +86,8 @@ function json1(parsing) {
 /*Función que utiliza los datos parseados contenidos en json2.json  */
 /*Y utiliza el tag "Div" con la Id "mostrar" para mostrarlos en html */
 function json2(parsing) {
-    var muestra = '<ul>';
+    var muestra =   '<h1> Lista de Pizzerías en Arica </h1>' +
+                    '<ul>';
     for (let item in parsing[0].pizzerias) {
         muestra += '<li>' + parsing[0].pizzerias[item] + '</li>';
     }
@@ -109,7 +98,8 @@ function json2(parsing) {
 /*Función que utiliza los datos parseados contenidos en json3.json  */
 /*Y utiliza el tag "Div" con la Id "mostrar" para mostrarlos en html */
 function json3(parsing) {
-    var muestra = '<ol>';
+    var muestra =   '<h1> Ranking de Bebidas Más Consumidas </h1>' +
+                    '<ol>';
     for (let item in parsing[0].bebidas) {
         muestra += '<li>' + parsing[0].bebidas[item] + '</li>';
     }

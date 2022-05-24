@@ -1,10 +1,22 @@
-/* CSS del selector */
+/* CSS del div selector */
 /*----------------------------*/
 
 .selector{
     margin: auto;
+    margin-top: 15%;
     width: 10%;
 }
+
+h1{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: lightblue;
+}
+
+
 /*----------------------------*/
 
 /* CSS de la lista ordenada/desordenada resultante*/
@@ -14,6 +26,7 @@ ol, ul{
     margin: auto;
     margin-left: 45%;
     margin-top: 1%;
+    font-size: larger;
 }
 /*----------------------------*/
 
@@ -30,19 +43,20 @@ ol, ul{
     margin-top: 1%;
 }
 
+
+.tabla-bonita th,
+.tabla-bonita td {
+    padding: 12px 15px;
+}
 .tabla-bonita thead tr {
     background-color: #009879;
     color: #ffffff;
     text-align: left;
 }
 
-.tabla-bonita th,
-.tabla-bonita td {
-    padding: 12px 15px;
-}
-
 .tabla-bonita tbody tr {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 2px solid #dddddd;
+    background-color: #ffffff;
 }
 /*----------------------------*/
 
