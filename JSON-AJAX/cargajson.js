@@ -35,8 +35,7 @@ function main() {
                     var data = JSON.parse(this.responseText);
                 
                     /*Ejecuta función json1 ubicado más abajo */
-                    json1(data);
-                    
+                    json1(data);  
                 }
                 if (value == '2') {
                     /*Transformación de dato a objeto JavaScript*/

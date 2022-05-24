@@ -61,12 +61,13 @@
         $(function(){
             $('#flip').click(function(){
                 if ($("#flip").text() == 'Ver Mas'){
+                    //Jquery para Establecer un nuevo texto.
                     $('#flip').text('Ver Menos');
                 } else {
                     $('#flip').text('Ver Mas');
                 }
                 $("#panel").slideToggle("slow");
-                // Al hacer click en el div de id panel, se cambiran alguno estilos del body
+                // Al hacer click en el div de id panel, se cambian algunos estilos del body
                 $("#panel").click(function(){
                     if ($("#panel").text() == 'Modo Oscuro'){
                         $('#panel').text('Modo Claro');
