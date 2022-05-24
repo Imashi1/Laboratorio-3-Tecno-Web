@@ -74,7 +74,6 @@ function json1(parsing) {
                     '<td style= "text-align: center"> Correo </td>' +
                     '</thead>';
     for (let item in parsing) {
-        console.log(parsing[item]);
         muestra += '<tr> <td>' + parsing[item].nombre +  '</td>' +
                         '<td>' + parsing[item].apellido +'</td>' + 
                         '<td>' + parsing[item].correo +  '</td> </tr>';

@@ -60,13 +60,24 @@
     <script>
         $(function(){
             $('#flip').click(function(){
+                if ($("#flip").text() == 'Ver Mas'){
+                    $('#flip').text('Ver Menos');
+                } else {
+                    $('#flip').text('Ver Mas');
+                }
                 $("#panel").slideToggle("slow");
                 // Al hacer click en el div de id panel, se cambiran alguno estilos del body
                 $("#panel").click(function(){
-                    $("body").css("background-color", "#575757");
-                    $("body").css("color", "white");
+                    if ($("#panel").text() == 'Modo Oscuro'){
+                        $('#panel').text('Modo Claro');
+                        $("body").css("background-color", "#575757");
+                        $("body").css("color", "white");
+                    } else {
+                        $('#panel').text('Modo Oscuro');
+                        $("body").css("color", "black");
+                        $("body").css("background-color", "#FFFFFF");
+                    } 
                 });
-                
             });
         });
     </script>
