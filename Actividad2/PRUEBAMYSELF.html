@@ -42,7 +42,7 @@
         })
     </script>
 
-    <!--Con este Jquery Mostraremos una alerta para avisar si el ejemplo es mostrado o ocultado-->
+    <!-- 1. Con este Jquery Mostraremos una alerta para avisar si el ejemplo es mostrado o ocultado-->
     <script>
         $(function(){
             $('#ocultar').click(function(){
@@ -56,7 +56,7 @@
         });
     </script>
 
-    <!-- Con este Jquery al pulsar el div de id flip se deslizara otro div de id panel lentamente -->
+    <!-- 2. Con este Jquery al pulsar el div de id flip se deslizara otro div de id panel lentamente -->
     <script>
         $(function(){
             $('#flip').click(function(){
@@ -71,7 +71,15 @@
         });
     </script>
 
-
+    <!-- 3. Con este Jquery hablan dos efectos (desaparecer y aparecer) al presionar el flip -->
+    <script>
+        $(function(){
+            $('#flip').click(function(){
+                $("#flip").fadeToggle(10)  
+                $("#flip").fadeIn(300)       
+            });      
+        });
+    </script>
 
     <!--Al utilizar este Jquery al hacerle click al boton ejemplo append pondremos el texto al final del HTML  -->
     <script>
@@ -137,7 +145,7 @@
     <br>
     <!-- Ejemplo 3 -->
 
-    
+
     <br>
     <br>
     <h3> jquery append y jquery after</h3>
